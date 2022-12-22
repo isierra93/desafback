@@ -1,0 +1,16 @@
+extends _layout.pug
+
+block form
+  a(href="/productos") Productos
+
+  h1 Ingresar productos
+
+  form(action="/productos" method="post")
+  
+    label(for="title") Title
+    input(type="text" name="title" id="title")
+    label(for="price") Price
+    input(type="text" name="price" id="price")
+    label(for="thumbnail") Thumbnail
+    input(type="text" name="thumbnail" id="thumbnail")
+    input(type="submit")

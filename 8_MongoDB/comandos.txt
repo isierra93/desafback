@@ -1,0 +1,92 @@
+mongod --dbpath "./ecommerce"
+use ecommerce
+db.createCollection("mensajes")
+db.createCollection("productos")
+
+| 1) 2)
+
+db.mensajes.insertMany([
+  {"author":"Alan Sherar", "text":"Hola", "timestamp":new ISODate()},
+  {"author":"Joaquin Serrano", "text":"como", "timestamp":new ISODate()},
+  {"author":"Martina Lopez", "text":"estan", "timestamp":new ISODate()},
+  {"author":"Sebastian Romano", "text":"todos", "timestamp":new ISODate()},
+  {"author":"Lucia Jaime", "text":"faltan", "timestamp":new ISODate()},
+  {"author":"Kevin Rodriguez", "text":"tres", "timestamp":new ISODate()},
+  {"author":"Alan Sherar", "text":"dias", "timestamp":new ISODate()},
+  {"author":"Leonardo DaVinci", "text":"para", "timestamp":new ISODate()},
+  {"author":"Manuel Belgrano", "text":"la", "timestamp":new ISODate()},
+  {"author":"Leonel Messi", "text":"final", "timestamp":new ISODate()}
+])
+db.productos.insertMany([
+  {"title":"Pantalon Campana", "price":3570, "thumbnail":"thumbnail.jpg", "timestamp":new ISODate()},
+  {"title":"Remera T-Shirt", "price":1550, "thumbnail":"thumbnail.jpg", "timestamp":new ISODate()},
+  {"title":"Mochila Sport", "price":4890, "thumbnail":"thumbnail.jpg", "timestamp":new ISODate()},
+  {"title":"Zapatillas Nike", "price":3699, "thumbnail":"thumbnail.jpg", "timestamp":new ISODate()},
+  {"title":"Guantes Gym", "price":2140, "thumbnail":"thumbnail.jpg", "timestamp":new ISODate()},
+  {"title":"Rodilleras Supreme", "price":1320, "thumbnail":"thumbnail.jpg", "timestamp":new ISODate()},
+  {"title":"Billetera", "price":3620, "thumbnail":"thumbnail.jpg", "timestamp":new ISODate()},
+  {"title":"Medias Soquetes", "price":560, "thumbnail":"thumbnail.jpg", "timestamp":new ISODate()},
+  {"title":"Riñonera Clasica", "price":235, "thumbnail":"thumbnail.jpg", "timestamp":new ISODate()},
+  {"title":"Botas p/Nieve", "price":2550, "thumbnail":"thumbnail.jpg", "timestamp":new ISODate()}
+])
+
+| 3)
+
+db.mensajes.find()
+db.productos.find()
+
+| 4)
+
+db.mensajes.countDocuments()
+db.productos.countDocuments()
+
+| 5)
+  | a)
+
+  db.productos.insertOne({"title":"Cartuchera Escolar", "price":1990, "thumbnail":"thumbnail.jpg", "timestamp": new ISODate()})
+
+  | b)
+    | i)
+
+    db.productos.find({"price":{$lt : 1000}})
+
+    | ii)
+
+    db.productos.find( {
+      $and: [
+        {"price": { $gt: 1000 }},
+        {"price": { $lt: 3000 }}
+      ] }
+    )
+
+    | iii)
+
+    db.productos.find({"price":{$gt : 3000}})
+
+    | iv)
+
+    db.productos.find({},{"title": 1, "_id":0}).sort({ "price": 1 }).skip(2).limit(1)
+  
+  | c)
+  
+  db.productos.updateMany({},{$set: {"stock":100}})
+  
+  | d)
+
+  db.productos.updateMany({"price":{$gt : 4000}},{$set: {"stock":0}})
+
+  | e)
+
+  db.productos.deleteMany({"price":{$lt:1000}})
+
+| 6)
+
+use admin
+db.createUser({"user":"Pepe","pwd":"asd456","roles": [{role:"read", db:"ecommerce"}]})
+
+// Para probar que no tiene acceso, salimos de mongosh, cerramos la base de datos de mongod, volvemos a abrir la conexion esta vez con "mongod --dbpath rutaBD --auth", y ahora entramos a "mongosh -u Pepe -p asd456" y ahora probamos insertar un item a productos.
+  
+  db.productos.insertOne({"title":"mochila"})
+
+// Respuesta:
+  MongoServerError: not authorized on ecommerce to execute command { insert: "productos", documents: [ { title:  "mochila", _id: ObjectId('639d031e5819f82db5a18437') } ], ordered: true, lsid: { id: UUID ("ce93dc13-37ab-4b0d-88ec-13a1f36c499b") }, $db: "ecommerce" }

@@ -1,0 +1,23 @@
+<%- include("./partials/head.ejs") %> 
+  <a href="/"> Index </a>
+
+  <h1>Productos</h1>
+  <% if (listExists) { %> 
+  <div class="table-responsive px-4">
+    <table class="table table-dark">
+      <tr style="color: yellow;"> <th>Title</th> <th>Price</th> <th>Thumbnail</th> </tr>
+      <% for (const prod of productos) {%>
+      <tr>
+        <td><%=prod.title%></td>
+        <td><%=prod.price%></td>
+        <td><%=prod.thumbnail%></td>
+      </tr>
+      <%};%>
+    </table>
+  </div>
+  <% } else { %> 
+    <p>No se encontraron productos </p>
+  <% } %> 
+  <%- include("./partials/footer.ejs") %> 
+</body>
+</html>

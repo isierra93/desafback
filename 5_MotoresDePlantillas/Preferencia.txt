@@ -1,0 +1,14 @@
+  Mi primera impresión sobre los Motores de Plantilla:
+  - Handlebars
+  - Pug
+  - Ejs
+  Pienso que todos tienen sus fortalezas y debilidades. Ejs al usar codigo de JavaScript, me parece el más 
+fácil para adaptarse a la syntax. Lo malo que veo es que tanto <% %> <% %> puede confundir. Hay que llevar 
+muy organizado y prolijo el codigo para no perderse. Y recordar siempre llaves y parentesis que faltan 
+cerrar. Pug en este sentido es más simple visualmente. No hay tantos simbolos en pantalla y la syntax no 
+parece ser demasiado dificil. El sistema de indentación es lo que puede dar problemas si uno se confunde
+o no lo lleva muy preciso. Handlebars es un término medio, no tiene mucho simbolo y maneja etiquetas html, 
+pero no estoy seguro de su potencial. Cada motor de plantilla maneja los layouts principales diferente.
+  Es cuestión de gustos. Yo creo que me acostumbraré a lo visual del Ejs, por lo que prefiero continuar 
+con ese motor. Me considero bastante organizado y prolijo, por lo que con más práctica creo que podré 
+aprovecharlo sin problemas.
