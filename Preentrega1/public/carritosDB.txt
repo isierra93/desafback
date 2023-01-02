@@ -1,0 +1,43 @@
+[
+  {
+    "id": 1,
+    "timestamp": 1670423404868,
+    "productos": [
+      {
+        "id": 4,
+        "timestamp": 1670420304542,
+        "nombre": "Zapatillas",
+        "descripcion": "Unas zapatillas para caminar hacia tus sueños",
+        "codigo": 5455,
+        "foto": "thumbnail.jpg",
+        "precio": 5.697,
+        "stock": 20
+      },
+      {
+        "id": 6,
+        "timestamp": 1670420316386,
+        "nombre": "Soporte para Televisor",
+        "descripcion": "Un soporte para soportar todos tus televisores",
+        "codigo": 5425,
+        "foto": "thumbnail.jpg",
+        "precio": 5.697,
+        "stock": 20
+      },
+      {
+        "id": 1,
+        "timestamp": 1670420282485,
+        "nombre": "Cepillo",
+        "descripcion": "Un cepillo para limpiar todos tus sueños",
+        "codigo": 5415,
+        "foto": "thumbnail.jpg",
+        "precio": 5.697,
+        "stock": 20
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "timestamp": 1670423406043,
+    "productos": []
+  }
+]

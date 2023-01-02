@@ -1,0 +1,62 @@
+[
+  {
+    "id": 1,
+    "timestamp": 1670420282485,
+    "nombre": "Cepillo",
+    "descripcion": "Un cepillo para limpiar todos tus sueños",
+    "codigo": 5415,
+    "foto": "thumbnail.jpg",
+    "precio": 5.697,
+    "stock": 20
+  },
+  {
+    "id": 2,
+    "timestamp": 1670420293155,
+    "nombre": "Mochila",
+    "descripcion": "Una mochila para llevar todos tus sueños",
+    "codigo": 5465,
+    "foto": "thumbnail.jpg",
+    "precio": 5.697,
+    "stock": 20
+  },
+  {
+    "id": 3,
+    "timestamp": 1670420298348,
+    "nombre": "Pantalon",
+    "descripcion": "Un pantalon para abrigar todos tus sueños",
+    "codigo": 5445,
+    "foto": "thumbnail.jpg",
+    "precio": 5.697,
+    "stock": 20
+  },
+  {
+    "id": 4,
+    "timestamp": 1670420304542,
+    "nombre": "Zapatillas",
+    "descripcion": "Unas zapatillas para caminar hacia tus sueños",
+    "codigo": 5455,
+    "foto": "thumbnail.jpg",
+    "precio": 5.697,
+    "stock": 20
+  },
+  {
+    "id": 5,
+    "timestamp": 1670420307834,
+    "nombre": "Remera",
+    "descripcion": "Una remera para ocultar todos tus sueños",
+    "codigo": 5435,
+    "foto": "thumbnail.jpg",
+    "precio": 5.697,
+    "stock": 20
+  },
+  {
+    "id": 6,
+    "timestamp": 1670420316386,
+    "nombre": "Soporte para Televisor",
+    "descripcion": "Un soporte para soportar todos tus televisores",
+    "codigo": 5425,
+    "foto": "thumbnail.jpg",
+    "precio": 5.697,
+    "stock": 20
+  }
+]
