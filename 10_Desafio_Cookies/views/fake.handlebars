@@ -1,0 +1,30 @@
+<section class="d-flex flex-row justify-content-center flex-column">
+    {{#if listExists}}
+    <h3 style="color:blue; text-align: center">LISTA DE PRODUCTOS</h3>
+    <div class="table-responsive container" style="width: 45%;">
+        <table class="table table-success">
+            <thead>
+                <tr>
+                    <th scope="col">Producto</th>
+                    <th scope="col">Precio</th>
+                    <th scope="col">Imagen</th>
+                </tr>
+            </thead>
+            <tbody>
+            {{#each products}}
+                    <tr>
+                        <td>{{this.title}}</td>
+                        <td>{{this.price}}</td>
+                        <td><img style="width: 60px" src="{{this.thumbnail}}" alt="{{this.title}}"></td>
+                    </tr>
+            {{/each}}
+            </tbody>
+        </table>
+    </div>
+    {{else}}
+        <h4 class="alert alert-danger container">NO HAY PRODUCTOS</h4>
+    {{/if}}
+</section>
+{{#if script}}
+<script src="../scripts/{{script}}.js"></script>
+{{/if}}
