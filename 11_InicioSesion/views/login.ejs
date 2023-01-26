@@ -1,0 +1,19 @@
+<%- include('_head') %>
+
+  <main class="container text-center">
+    <h1>Login</h1>
+    <form action="/login" method="post">
+      <label for="email">Email de usuario</label> <br>
+      <input type="email" id="email" name="username" placeholder="cuenta@empresa.com"> <br>
+      <label for="contraseña">Contraseña</label> <br>
+      <input type="password" id="contraseña" name="password"> <br>
+
+      <button class="my-4">Ingresar</button> <br>
+    </form>
+    
+    <button class="my-4">
+      <a href="/signin"> Registrarme </a>
+    </button>
+  </main>
+
+<%- include('_foot') %>

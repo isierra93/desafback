@@ -1,0 +1,39 @@
+<%- include('_head') %> 
+<body>
+  
+  <main class="container text-center">
+      <%- include('_usuario') %> 
+
+    <h1 class="my-5">WebSocket Communication</h1>
+    <form >
+      <input class="my-2" id="title" type="text" placeholder="title" required> <br>
+      <input class="my-2" id="price" type="text" placeholder="price" required> <br>
+      <input class="my-2" id="thumbnail" type="text"  placeholder="thumbnail" required> <br>
+      <button onclick="return addProduct()">Añadir Producto</button>
+    </form>
+
+    <h1>Productos con WebSocket</h1>
+    <div class="table-responsive px-4" id="productos"></div>
+
+    <h1>Chat WebSocket</h1>
+    <h2> Compresión con Normalizr: %<%- porcentaje %> </h2> 
+    <div class="container-fluid row">
+      <form class="col">
+        <input type="email" class="my-2" id="email" placeholder="Tu email"  required> <br>
+        <input type="text" class="my-2" id="nombre" placeholder="Tu nombre"  required> <br>
+        <input type="text" class="my-2" id="apellido" placeholder="Tu apellido"  required> <br>
+        <input type="number" class="my-2" id="edad" placeholder="Tu edad"  required> <br>
+        <input type="text" class="my-2" id="alias" placeholder="Tu alias"  required> <br>
+        <input type="text" class="my-2" id="avatar" placeholder="Link de tu avatar"> <br>
+        <input type="text" class="my-2" id="text" placeholder="Cuéntanos algo..."  > <br>
+        <button onclick="return addMessage()">Enviar Mensaje</button>
+      </form>
+      <div class="col">
+
+        <div id="messages"></div>  
+      </div>
+    </div>
+    
+
+  </main>
+  <%- include('_foot') %> 
