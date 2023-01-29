@@ -1,6 +1,6 @@
 import {faker} from "@faker-js/faker"
 
-export default function getProdMocks(cant = 5){
+export function getProdMocks(cant = 5){
   const mocks = []
   for (let i = 0; i < cant; i++) {
     mocks.push({

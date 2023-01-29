@@ -1,36 +1,28 @@
 import Mensajes from "./public/contenedores/mongohijos/Mensajes.js"
 import Usuarios from "./public/contenedores/mongohijos/Usuarios.js"
+import * as routes from "./public/src/routes.js"
+import bCrypt from "bcrypt"
 import {DBCliente} from "./public/contenedores/ContenedorSQL.js"
 import express from "express"
 import {Server } from "http"
 import {Server as IOServer} from "socket.io"
 import sqliteOptions from "./options/sqliteOpt.js"
-import getProdMocks from "./public/contenedores/ProdMocks.js"
 import chatSchema from "./config/chatSchema.js"
 import {normalize} from "normalizr"
-import util from "util"
 import MongoStore from "connect-mongo"
 import URL from "./config/urlMongo.js"
 import session from "express-session"
 import passport from "passport"
-import * as passportLocal from "passport-local"
-
-const LocalStrategy = passportLocal.Strategy
-passport.use("login", new LocalStrategy(
-  (username, password, next) => {
-
-
-  })
-)
-
+import {Strategy as LocalStrategy} from "passport-local"
 
 const mongoAdvOpt = {useNewUrlParser:true, useUnifiedTopology:true}
 
 // DDBB START
 
-const ContMensajes = new Mensajes()
-const ContProductos = new DBCliente(sqliteOptions, "productos")
-ContProductos.crearTablaProductos()
+const Users = new Usuarios()
+const Messages = new Mensajes()
+const Products = new DBCliente(sqliteOptions, "productos")
+Products.crearTablaProductos()
 
 // DDBB END
 // SERVER START
@@ -56,76 +48,98 @@ app.use(session({
   secret: "Es un secretito",
   resave: false,
   saveUninitialized: false,
+  rolling:true,
   cookie:{
     path: '/',
-    httpOnly: true,
+    httpOnly: false,
     secure: false,
     maxAge: 600000
-  },
-  rolling:true
+  }
 }))
 
 // SESSION END
+// PASSPORT START
+
+app.use(passport.session())
+
+passport.use("login", new LocalStrategy(
+  async (username, password, done) => {
+    const acc = await Users.getByEmail(username)
+
+    if(!acc){
+      return done(null, false)
+    }
+
+    if(!isValidPassword(acc, password)){
+      return done(null, false)
+    }
+
+    return done(null, acc)
+  })
+)
+
+passport.use("signin", new LocalStrategy(
+  async (username, password, done) => {
+    const acc = await Users.getByEmail(username)
+    
+    if(acc){
+      console.log("Este usuario ya existe");
+      return done(null, false)
+    }
+
+    const newAcc = {
+      email: username,
+      password: createHash(password),
+    }
+
+    await Users.save(newAcc)
+
+    return done(null, newAcc)
+  })
+)
+
+passport.serializeUser((username, done) => {
+  done(null, username.email)
+})
+
+passport.deserializeUser( async (email, done) => {
+    const acc = await Users.getByEmail(email)
+    
+    done(null, acc)
+})
+
+// PASSPORT END
 //----------CONTINUA------------
 
-app.get('/',isLogged, async (req, res) => {
-  console.log(req.session.user)
+// INDEX
+app.get('/', checkAuthentication, async (req, res) => {
 
-  const chat = await ContMensajes.getAll()
+  const chat = await Messages.getAll()
   const chatLength = JSON.stringify(chat).length
   const chatNormalizadoLength = JSON.stringify(normalizarChat(chat)).length
   const porcentaje = Math.round(getCompPorcentaje(chatLength,chatNormalizadoLength))
+  const username = req.user.email
 
-  const username = req.session.user
   res.render("index", {porcentaje: porcentaje, usuario: username})
 })
 
-app.get("/signin", (req, res) => {
-  
-})
+// SIGNIN
+app.get("/signin", routes.getSignin)
+app.post("/signin", passport.authenticate("signin", {failureRedirect: "/failSignin", successRedirect: "/login" }))
+app.get("/failSignin", routes.getFailSignin)
 
-app.get("/login", (req, res) => {
-  if(req.session.user){
-    return res.redirect("/")
-  }
-  res.render("login")
-})
+// LOGIN
+app.get("/login", routes.getLogin)
+app.post("/login", passport.authenticate("login", {failureRedirect: "/failLogin", successRedirect: "/" }))
+app.get("/failLogin", routes.getFailLogin)
 
-app.get("/logout", (req, res) => {
-  const username = req.session.user
+// LOGOUT
+app.get("/logout", routes.getLogout)
 
-  if(!username){
-    return res.json( {error: "no hay una session activa"})
-  }
+// MOCKS
+app.get("/api/productos-test/:cant?", checkAuth, routes.getAPIProdMocks)
 
-  req.session.destroy( err => {
-    if(err){
-      return res.json({ status: "Logout ERROR", body: err})
-    } else {
-      res.render("logout", {usuario: username})
-    }
-  })
-})
-
-app.get("/api/productos-test/:cant?",isLogged, async (req, res) => {
-
-  if(req.params.cant){
-    const productos = getProdMocks(req.params.cant)
-    return res.render("fakerMocks", {productos: productos})
-  }
-  const productos = getProdMocks()
-  res.render("fakerMocks", {productos: productos})
-})
-
-app.post("/login", (req, res) => {
-  const pass = "valido"
-
-  if(req.body.password !== pass){
-    return res.redirect("/login")
-  }
-  req.session.user = req.body.username
-  res.redirect("/")
-})
+app.get("*", routes.getAny)
 
 httpServer.listen(PORT, () => console.log(`Server ON port ${PORT}`))
 
@@ -133,26 +147,24 @@ httpServer.listen(PORT, () => console.log(`Server ON port ${PORT}`))
 // WEBSOCKET START
 
 io.on('connection', async (socket) =>{
-  console.log('Un cliente se ha conectado')
+  console.log('Un usuario se ha conectado')
 
   /* Guarda el array de todos los mensajes */
-  const historialMensajes = await ContMensajes.getAll()
+  const historialMensajes = await Messages.getAll()
   /* Guarda el array de todos los productos */
-  const historialProductos = await ContProductos.getAll()
+  const historialProductos = await Products.getAll()
   
   socket.emit('productos', historialProductos)
   
   //compresion  
   const chatNormalizado = normalizarChat(historialMensajes)
 
-  console.log("chatnormalizado enviado por socket")
   io.sockets.emit('mensajes', chatNormalizado)
 
   socket.on('new-msg', async (message) => {
-    console.log("mensaje nuevo");
-    await ContMensajes.save(message)
+    await Messages.save(message)
     
-    const historialMensajes = await ContMensajes.getAll()
+    const historialMensajes = await Messages.getAll()
 
     //compresion
     const chatNormalizado = normalizarChat(historialMensajes)
@@ -161,9 +173,9 @@ io.on('connection', async (socket) =>{
   })
 
   socket.on('new-product', async (data) => {
-    await ContProductos.save(data)
+    await Products.save(data)
 
-    const historialProductos = await ContProductos.getAll()
+    const historialProductos = await Products.getAll()
 
     io.sockets.emit('productos', historialProductos)
   })
@@ -171,10 +183,6 @@ io.on('connection', async (socket) =>{
 
 // WEBSOCKET END
 // FUNCTIONS
-
-function fancyLog(obj){
-  console.log(util.inspect(obj,false,10,true))
-}
 
 function normalizarChat(obj){
   const stringifyData = JSON.stringify(obj)
@@ -192,11 +200,30 @@ function getCompPorcentaje(completo, comprimido){
   return (comprimido*100)/completo
 }
 
-function isLogged(req, res, next) {
-  const user = req.session.user
-  if(!user){
-    return res.redirect("/login")
-  } else {
+function checkAuth(req, res, next) {
+  if(req.isAuthenticated()) {
     next()
+  } else {
+    return res.redirect("/login")
   }
+}
+
+function checkAuthentication(req,res,next){
+  if(req.isAuthenticated()){
+      next();
+  } else{
+      res.redirect("/login");
+  }
+}
+
+function isValidPassword(user, password) {
+  return bCrypt.compareSync(password, user.password)
+}
+
+function createHash(password) {
+  return bCrypt.hashSync(
+    password,
+    bCrypt.genSaltSync(10),
+    null
+  )
 }

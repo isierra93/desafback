@@ -43,12 +43,12 @@ export default class Mensajes extends MongoContainer{
       await this.connect()
       console.log("save msj Start")
 
-      await model.mensajes(obj).save()
+      const nuevo = await model.mensajes(obj).save()
       
       this.disconnect()
       console.log("save msj End")
 
-      return obj
+      return nuevo
     } catch (error) {
       console.log(error)
     }

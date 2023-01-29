@@ -37,18 +37,33 @@ export default class Usuarios extends MongoContainer{
     }
   }
 
+  async getByEmail(email){
+    try {
+      await this.connect()
+      console.log("getByEmail user Start")
+
+      let res = await model.usuarios.findOne({email: email},{__v:0})
+
+      this.disconnect()
+      console.log("getByEmail user End")
+      return res
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   //POST
   async save(obj){
     try {
       await this.connect()
       console.log("save user Start")
 
-      await model.usuarios(obj).save()
+      const nuevo = await model.usuarios(obj).save()
       
       this.disconnect()
       console.log("save user End")
 
-      return obj
+      return nuevo
     } catch (error) {
       console.log(error)
     }
