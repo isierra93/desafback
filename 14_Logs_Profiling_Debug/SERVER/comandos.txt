@@ -1,0 +1,19 @@
+nodemo  n server -p 8080 -m FORK
+nodemon server -p 8081 -m CLUSTER
+
+forever start server.js
+forever list
+forever stopall
+
+
+pm2 start server.js --name="ServidorIndividual" -- -p 8080
+
+pm2 start server.js -f --name="SvApi-1" -- -p 8082
+pm2 start server.js -f --name="SvApi-2" -- -p 8083
+pm2 start server.js -f --name="SvApi-3" -- -p 8084
+pm2 start server.js -f --name="SvApi-4" -- -p 8085
+
+pm2 l
+pm2 stop all
+pm2 restart all
+pm2 delete all

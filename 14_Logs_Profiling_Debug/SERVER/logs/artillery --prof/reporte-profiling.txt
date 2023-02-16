@@ -1,0 +1,20 @@
+Server modo fork con info NO BLOQUEANTE (sin console.log({datos}) ):
+
+tiempo(ms) por http request: 
+  min: ................... 3
+  max: ................... 120
+  median: ................ 4
+
+  2347 ticks.
+
+
+Server modo fork con info BLOQUEANTE (con console.log({datos}) ):
+
+tiempo(ms) por http request: 
+  min: ................... 22
+  max: ................... 170
+  median: ................ 87.4
+
+  3263 ticks
+
+  
