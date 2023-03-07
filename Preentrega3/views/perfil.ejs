@@ -1,0 +1,29 @@
+<%- include('_head') %>
+
+<body>
+  
+  <main class="container text-center justify-content-center">
+    <%- include('_usuario') %> 
+
+    <%- include("_nav") %>
+
+    <h1 class="mt-4"> Información Personal </h1>
+    <div class="justify-content-center text-start row px-5 mx-5">
+      <h4 class="col-7">Nombre: <%- user.nombre %> <%- user.apellido %>  </h4>
+      <h4 class="col-7">Correo: <%- user.email %> </h4>
+      <h4 class="col-7">Edad: <%- user.edad %> </h4>
+      <h4 class="col-7">Numero: <%- user.numero %> </h4>
+      <h4 class="col-7">Direccion: <%- user.direccion %> </h4>
+    </div>
+    
+    <form action="/avatarChange" method="post" enctype="multipart/form-data" class="mt-3">
+      <h4>
+        <label for="newAvatar">Si quiere cambiar su foto de perfil: (aun no completamente implementado)</label> <br>
+      </h4>
+      <input type="file" id="newAvatar" name="newAvatar"> <br>
+      <input type="submit" value="Guardar">
+    </form>
+    
+  </main>
+
+  <%- include('_foot') %> 

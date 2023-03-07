@@ -1,0 +1,31 @@
+<%- include('_head') %>
+
+<body>
+  
+  <main class="container text-center justify-content-center">
+    <%- include('_usuario') %> 
+
+    <%- include("_nav") %>
+
+    <h1> Mi Carrito de compras</h1>
+
+    <% if (carritoExists) { %> 
+      <div class="table-responsive px-4">
+        <table class="table table-dark">
+          <tr style="color: yellow;"> <th>Nombre</th> <th>Precio</th> <th>Referencia</th> </tr>
+          <% for (const prod of carrito) {%>
+          <tr>
+            <td><%=prod.titulo%></td>
+            <td><%=prod.precio%></td>
+            <td><%=prod.thumbnail%></td>
+          </tr>
+          <%};%>
+        </table>
+      </div>
+      <% } else { %> 
+        <p>No tenés productos en tu carrito aún. </p>
+      <% } %> 
+    
+  </main>
+
+  <%- include('_foot') %> 

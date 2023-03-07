@@ -1,0 +1,277 @@
+[2023-03-06T18:28:19.017] [ERROR] error - ReferenceError: cant is not defined
+    at productos.saveMany (file:///E:/CODER-HOUSE/Cursos/Programacion-Backend/EntregaDesafios/Entregas/Preentrega3/public/src/contenedores/mongohijos/Productos.js:64:7)
+    at async Socket.<anonymous> (file:///E:/CODER-HOUSE/Cursos/Programacion-Backend/EntregaDesafios/Entregas/Preentrega3/server.js:115:7)
+[2023-03-06T21:06:43.020] [ERROR] error - ReferenceError: cant is not defined
+    at productos.saveMany (file:///E:/CODER-HOUSE/Cursos/Programacion-Backend/EntregaDesafios/Entregas/Preentrega3/src/contenedores/mongohijos/Productos.js:64:7)
+    at async Socket.<anonymous> (file:///E:/CODER-HOUSE/Cursos/Programacion-Backend/EntregaDesafios/Entregas/Preentrega3/server.js:115:7)
+[2023-03-06T21:07:38.142] [ERROR] error - ReferenceError: cant is not defined
+    at productos.saveMany (file:///E:/CODER-HOUSE/Cursos/Programacion-Backend/EntregaDesafios/Entregas/Preentrega3/src/contenedores/mongohijos/Productos.js:64:7)
+    at async Socket.<anonymous> (file:///E:/CODER-HOUSE/Cursos/Programacion-Backend/EntregaDesafios/Entregas/Preentrega3/server.js:115:7)
+[2023-03-06T21:08:14.994] [ERROR] error - ReferenceError: cant is not defined
+    at productos.saveMany (file:///E:/CODER-HOUSE/Cursos/Programacion-Backend/EntregaDesafios/Entregas/Preentrega3/src/contenedores/mongohijos/Productos.js:64:7)
+    at async Socket.<anonymous> (file:///E:/CODER-HOUSE/Cursos/Programacion-Backend/EntregaDesafios/Entregas/Preentrega3/server.js:115:7)
+[2023-03-06T21:08:54.298] [ERROR] error - ReferenceError: cant is not defined
+    at productos.saveMany (file:///E:/CODER-HOUSE/Cursos/Programacion-Backend/EntregaDesafios/Entregas/Preentrega3/src/contenedores/mongohijos/Productos.js:64:7)
+    at async Socket.<anonymous> (file:///E:/CODER-HOUSE/Cursos/Programacion-Backend/EntregaDesafios/Entregas/Preentrega3/server.js:115:7)
+[2023-03-06T21:11:20.074] [ERROR] error - ReferenceError: cant is not defined
+    at productos.saveMany (file:///E:/CODER-HOUSE/Cursos/Programacion-Backend/EntregaDesafios/Entregas/Preentrega3/src/contenedores/mongohijos/Productos.js:64:7)
+    at async Socket.<anonymous> (file:///E:/CODER-HOUSE/Cursos/Programacion-Backend/EntregaDesafios/Entregas/Preentrega3/server.js:115:7)
+[2023-03-06T21:11:52.320] [ERROR] error - ReferenceError: cant is not defined
+    at productos.saveMany (file:///E:/CODER-HOUSE/Cursos/Programacion-Backend/EntregaDesafios/Entregas/Preentrega3/src/contenedores/mongohijos/Productos.js:64:7)
+    at async Socket.<anonymous> (file:///E:/CODER-HOUSE/Cursos/Programacion-Backend/EntregaDesafios/Entregas/Preentrega3/server.js:115:7)
+[2023-03-06T21:12:40.430] [ERROR] error - MongoBulkWriteError: Cannot use a session that has ended
+    at resultHandler (E:\CODER-HOUSE\Cursos\Programacion-Backend\EntregaDesafios\Entregas\Preentrega3\node_modules\mongodb\lib\bulk\common.js:395:29)
+    at E:\CODER-HOUSE\Cursos\Programacion-Backend\EntregaDesafios\Entregas\Preentrega3\node_modules\mongodb\lib\utils.js:349:66
+    at processTicksAndRejections (node:internal/process/task_queues:96:5) {
+  writeErrors: [],
+  result: BulkWriteResult {
+    result: {
+      ok: 1,
+      writeErrors: [],
+      writeConcernErrors: [],
+      insertedIds: [Array],
+      nInserted: 0,
+      nUpserted: 0,
+      nMatched: 0,
+      nModified: 0,
+      nRemoved: 0,
+      upserted: []
+    }
+  },
+  insertedDocs: [
+    {
+      titulo: 'Generic Plastic Sausages',
+      precio: 5947,
+      thumbnail: 'https://loremflickr.com/640/480',
+      _id: new ObjectId("6406817865290bda0404c9cf"),
+      __v: 0
+    },
+    {
+      titulo: 'Refined Granite Cheese',
+      precio: 2892,
+      thumbnail: 'https://loremflickr.com/640/480',
+      _id: new ObjectId("6406817865290bda0404c9d0"),
+      __v: 0
+    },
+    {
+      titulo: 'Small Rubber Sausages',
+      precio: 7566,
+      thumbnail: 'https://loremflickr.com/640/480',
+      _id: new ObjectId("6406817865290bda0404c9d1"),
+      __v: 0
+    },
+    {
+      titulo: 'Luxurious Wooden Fish',
+      precio: 5186,
+      thumbnail: 'https://loremflickr.com/640/480',
+      _id: new ObjectId("6406817865290bda0404c9d2"),
+      __v: 0
+    },
+    {
+      titulo: 'Ergonomic Soft Pizza',
+      precio: 6516,
+      thumbnail: 'https://loremflickr.com/640/480',
+      _id: new ObjectId("6406817865290bda0404c9d3"),
+      __v: 0
+    },
+    {
+      titulo: 'Recycled Concrete Chair',
+      precio: 1650,
+      thumbnail: 'https://loremflickr.com/640/480',
+      _id: new ObjectId("6406817865290bda0404c9d4"),
+      __v: 0
+    },
+    {
+      titulo: 'Refined Plastic Salad',
+      precio: 4807,
+      thumbnail: 'https://loremflickr.com/640/480',
+      _id: new ObjectId("6406817865290bda0404c9d5"),
+      __v: 0
+    },
+    {
+      titulo: 'Gorgeous Concrete Mouse',
+      precio: 3203,
+      thumbnail: 'https://loremflickr.com/640/480',
+      _id: new ObjectId("6406817865290bda0404c9d6"),
+      __v: 0
+    },
+    {
+      titulo: 'Tasty Concrete Pizza',
+      precio: 1247,
+      thumbnail: 'https://loremflickr.com/640/480',
+      _id: new ObjectId("6406817865290bda0404c9d7"),
+      __v: 0
+    },
+    {
+      titulo: 'Practical Soft Hat',
+      precio: 8389,
+      thumbnail: 'https://loremflickr.com/640/480',
+      _id: new ObjectId("6406817865290bda0404c9d8"),
+      __v: 0
+    },
+    {
+      titulo: 'Recycled Cotton Hat',
+      precio: 2049,
+      thumbnail: 'https://loremflickr.com/640/480',
+      _id: new ObjectId("6406817865290bda0404c9d9"),
+      __v: 0
+    },
+    {
+      titulo: 'Refined Plastic Sausages',
+      precio: 9532,
+      thumbnail: 'https://loremflickr.com/640/480',
+      _id: new ObjectId("6406817865290bda0404c9da"),
+      __v: 0
+    },
+    {
+      titulo: 'Rustic Bronze Sausages',
+      precio: 1916,
+      thumbnail: 'https://loremflickr.com/640/480',
+      _id: new ObjectId("6406817865290bda0404c9db"),
+      __v: 0
+    },
+    {
+      titulo: 'Rustic Rubber Towels',
+      precio: 5915,
+      thumbnail: 'https://loremflickr.com/640/480',
+      _id: new ObjectId("6406817865290bda0404c9dc"),
+      __v: 0
+    },
+    {
+      titulo: 'Electronic Steel Shoes',
+      precio: 5032,
+      thumbnail: 'https://loremflickr.com/640/480',
+      _id: new ObjectId("6406817865290bda0404c9dd"),
+      __v: 0
+    },
+    {
+      titulo: 'Oriental Concrete Computer',
+      precio: 7602,
+      thumbnail: 'https://loremflickr.com/640/480',
+      _id: new ObjectId("6406817865290bda0404c9de"),
+      __v: 0
+    },
+    {
+      titulo: 'Gorgeous Bronze Bike',
+      precio: 4453,
+      thumbnail: 'https://loremflickr.com/640/480',
+      _id: new ObjectId("6406817865290bda0404c9df"),
+      __v: 0
+    },
+    {
+      titulo: 'Handmade Fresh Gloves',
+      precio: 6544,
+      thumbnail: 'https://loremflickr.com/640/480',
+      _id: new ObjectId("6406817865290bda0404c9e0"),
+      __v: 0
+    },
+    {
+      titulo: 'Intelligent Soft Table',
+      precio: 3232,
+      thumbnail: 'https://loremflickr.com/640/480',
+      _id: new ObjectId("6406817865290bda0404c9e1"),
+      __v: 0
+    },
+    {
+      titulo: 'Modern Rubber Fish',
+      precio: 2654,
+      thumbnail: 'https://loremflickr.com/640/480',
+      _id: new ObjectId("6406817865290bda0404c9e2"),
+      __v: 0
+    },
+    {
+      titulo: 'Generic Soft Towels',
+      precio: 9044,
+      thumbnail: 'https://loremflickr.com/640/480',
+      _id: new ObjectId("6406817865290bda0404c9e3"),
+      __v: 0
+    },
+    {
+      titulo: 'Intelligent Granite Chips',
+      precio: 6539,
+      thumbnail: 'https://loremflickr.com/640/480',
+      _id: new ObjectId("6406817865290bda0404c9e4"),
+      __v: 0
+    },
+    {
+      titulo: 'Modern Bronze Chair',
+      precio: 9226,
+      thumbnail: 'https://loremflickr.com/640/480',
+      _id: new ObjectId("6406817865290bda0404c9e5"),
+      __v: 0
+    },
+    {
+      titulo: 'Incredible Fresh Car',
+      precio: 8898,
+      thumbnail: 'https://loremflickr.com/640/480',
+      _id: new ObjectId("6406817865290bda0404c9e6"),
+      __v: 0
+    },
+    {
+      titulo: 'Generic Frozen Table',
+      precio: 5369,
+      thumbnail: 'https://loremflickr.com/640/480',
+      _id: new ObjectId("6406817865290bda0404c9e7"),
+      __v: 0
+    }
+  ],
+  [Symbol(errorLabels)]: Set(0) {}
+}
+[2023-03-06T21:12:57.036] [ERROR] error - ReferenceError: cant is not defined
+    at productos.saveMany (file:///E:/CODER-HOUSE/Cursos/Programacion-Backend/EntregaDesafios/Entregas/Preentrega3/src/contenedores/mongohijos/Productos.js:64:7)
+    at async Socket.<anonymous> (file:///E:/CODER-HOUSE/Cursos/Programacion-Backend/EntregaDesafios/Entregas/Preentrega3/server.js:117:7)
+[2023-03-06T21:14:14.698] [ERROR] error - MongoExpiredSessionError: Cannot use a session that has ended
+    at applySession (E:\CODER-HOUSE\Cursos\Programacion-Backend\EntregaDesafios\Entregas\Preentrega3\node_modules\mongodb\lib\sessions.js:655:16)
+    at Connection.command (E:\CODER-HOUSE\Cursos\Programacion-Backend\EntregaDesafios\Entregas\Preentrega3\node_modules\mongodb\lib\cmap\connection.js:294:53)
+    at E:\CODER-HOUSE\Cursos\Programacion-Backend\EntregaDesafios\Entregas\Preentrega3\node_modules\mongodb\lib\sdam\server.js:208:18
+    at Object.callback (E:\CODER-HOUSE\Cursos\Programacion-Backend\EntregaDesafios\Entregas\Preentrega3\node_modules\mongodb\lib\cmap\connection_pool.js:327:13)
+    at ConnectionPool.processWaitQueue (E:\CODER-HOUSE\Cursos\Programacion-Backend\EntregaDesafios\Entregas\Preentrega3\node_modules\mongodb\lib\cmap\connection_pool.js:506:33)
+    at E:\CODER-HOUSE\Cursos\Programacion-Backend\EntregaDesafios\Entregas\Preentrega3\node_modules\mongodb\lib\cmap\connection_pool.js:207:37
+    at processTicksAndRejections (node:internal/process/task_queues:78:11) {
+  [Symbol(errorLabels)]: Set(0) {}
+}
+[2023-03-06T21:14:24.962] [ERROR] error - ReferenceError: cant is not defined
+    at productos.saveMany (file:///E:/CODER-HOUSE/Cursos/Programacion-Backend/EntregaDesafios/Entregas/Preentrega3/src/contenedores/mongohijos/Productos.js:64:7)
+    at async Socket.<anonymous> (file:///E:/CODER-HOUSE/Cursos/Programacion-Backend/EntregaDesafios/Entregas/Preentrega3/server.js:117:7)
+[2023-03-06T22:28:21.317] [ERROR] error - ReferenceError: cant is not defined
+    at productos.saveMany (file:///E:/CODER-HOUSE/Cursos/Programacion-Backend/EntregaDesafios/Entregas/Preentrega3/src/contenedores/mongohijos/Productos.js:64:7)
+    at async Socket.<anonymous> (file:///E:/CODER-HOUSE/Cursos/Programacion-Backend/EntregaDesafios/Entregas/Preentrega3/server.js:118:7)
+[2023-03-06T22:30:57.588] [ERROR] error - ReferenceError: cant is not defined
+    at productos.saveMany (file:///E:/CODER-HOUSE/Cursos/Programacion-Backend/EntregaDesafios/Entregas/Preentrega3/src/contenedores/mongohijos/Productos.js:64:7)
+    at async Socket.<anonymous> (file:///E:/CODER-HOUSE/Cursos/Programacion-Backend/EntregaDesafios/Entregas/Preentrega3/server.js:118:7)
+[2023-03-06T22:31:02.725] [ERROR] error - ReferenceError: cant is not defined
+    at productos.saveMany (file:///E:/CODER-HOUSE/Cursos/Programacion-Backend/EntregaDesafios/Entregas/Preentrega3/src/contenedores/mongohijos/Productos.js:64:7)
+    at async Socket.<anonymous> (file:///E:/CODER-HOUSE/Cursos/Programacion-Backend/EntregaDesafios/Entregas/Preentrega3/server.js:118:7)
+[2023-03-06T22:32:00.906] [ERROR] error - ReferenceError: cant is not defined
+    at productos.saveMany (file:///E:/CODER-HOUSE/Cursos/Programacion-Backend/EntregaDesafios/Entregas/Preentrega3/src/contenedores/mongohijos/Productos.js:64:7)
+    at async Socket.<anonymous> (file:///E:/CODER-HOUSE/Cursos/Programacion-Backend/EntregaDesafios/Entregas/Preentrega3/server.js:118:7)
+[2023-03-06T22:32:10.781] [ERROR] error - ReferenceError: cant is not defined
+    at productos.saveMany (file:///E:/CODER-HOUSE/Cursos/Programacion-Backend/EntregaDesafios/Entregas/Preentrega3/src/contenedores/mongohijos/Productos.js:64:7)
+    at async Socket.<anonymous> (file:///E:/CODER-HOUSE/Cursos/Programacion-Backend/EntregaDesafios/Entregas/Preentrega3/server.js:118:7)
+[2023-03-06T22:32:15.484] [ERROR] error - ReferenceError: cant is not defined
+    at productos.saveMany (file:///E:/CODER-HOUSE/Cursos/Programacion-Backend/EntregaDesafios/Entregas/Preentrega3/src/contenedores/mongohijos/Productos.js:64:7)
+    at async Socket.<anonymous> (file:///E:/CODER-HOUSE/Cursos/Programacion-Backend/EntregaDesafios/Entregas/Preentrega3/server.js:118:7)
+[2023-03-06T22:32:17.779] [ERROR] error - ReferenceError: cant is not defined
+    at productos.saveMany (file:///E:/CODER-HOUSE/Cursos/Programacion-Backend/EntregaDesafios/Entregas/Preentrega3/src/contenedores/mongohijos/Productos.js:64:7)
+    at async Socket.<anonymous> (file:///E:/CODER-HOUSE/Cursos/Programacion-Backend/EntregaDesafios/Entregas/Preentrega3/server.js:118:7)
+[2023-03-06T22:32:17.780] [ERROR] error - ReferenceError: cant is not defined
+    at productos.saveMany (file:///E:/CODER-HOUSE/Cursos/Programacion-Backend/EntregaDesafios/Entregas/Preentrega3/src/contenedores/mongohijos/Productos.js:64:7)
+    at async Socket.<anonymous> (file:///E:/CODER-HOUSE/Cursos/Programacion-Backend/EntregaDesafios/Entregas/Preentrega3/server.js:118:7)
+[2023-03-06T22:32:19.326] [ERROR] error - ReferenceError: cant is not defined
+    at productos.saveMany (file:///E:/CODER-HOUSE/Cursos/Programacion-Backend/EntregaDesafios/Entregas/Preentrega3/src/contenedores/mongohijos/Productos.js:64:7)
+    at async Socket.<anonymous> (file:///E:/CODER-HOUSE/Cursos/Programacion-Backend/EntregaDesafios/Entregas/Preentrega3/server.js:118:7)
+[2023-03-06T22:32:20.384] [ERROR] error - ReferenceError: cant is not defined
+    at productos.saveMany (file:///E:/CODER-HOUSE/Cursos/Programacion-Backend/EntregaDesafios/Entregas/Preentrega3/src/contenedores/mongohijos/Productos.js:64:7)
+    at async Socket.<anonymous> (file:///E:/CODER-HOUSE/Cursos/Programacion-Backend/EntregaDesafios/Entregas/Preentrega3/server.js:118:7)
+[2023-03-06T22:32:25.551] [ERROR] error - ReferenceError: cant is not defined
+    at productos.saveMany (file:///E:/CODER-HOUSE/Cursos/Programacion-Backend/EntregaDesafios/Entregas/Preentrega3/src/contenedores/mongohijos/Productos.js:64:7)
+    at async Socket.<anonymous> (file:///E:/CODER-HOUSE/Cursos/Programacion-Backend/EntregaDesafios/Entregas/Preentrega3/server.js:118:7)
+[2023-03-06T22:39:51.948] [ERROR] error - ReferenceError: cant is not defined
+    at productos.saveMany (file:///E:/CODER-HOUSE/Cursos/Programacion-Backend/EntregaDesafios/Entregas/Preentrega3/src/contenedores/mongohijos/Productos.js:64:7)
+    at async Socket.<anonymous> (file:///E:/CODER-HOUSE/Cursos/Programacion-Backend/EntregaDesafios/Entregas/Preentrega3/server.js:118:7)
+[2023-03-06T22:42:33.053] [ERROR] error - ReferenceError: cant is not defined
+    at productos.saveMany (file:///E:/CODER-HOUSE/Cursos/Programacion-Backend/EntregaDesafios/Entregas/Preentrega3/src/contenedores/mongohijos/Productos.js:64:7)
+    at async Socket.<anonymous> (file:///E:/CODER-HOUSE/Cursos/Programacion-Backend/EntregaDesafios/Entregas/Preentrega3/server.js:118:7)
+[2023-03-06T22:42:38.055] [ERROR] error - ReferenceError: cant is not defined
+    at productos.saveMany (file:///E:/CODER-HOUSE/Cursos/Programacion-Backend/EntregaDesafios/Entregas/Preentrega3/src/contenedores/mongohijos/Productos.js:64:7)
+    at async Socket.<anonymous> (file:///E:/CODER-HOUSE/Cursos/Programacion-Backend/EntregaDesafios/Entregas/Preentrega3/server.js:118:7)

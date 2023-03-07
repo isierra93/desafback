@@ -1,0 +1,38 @@
+<%- include('_head') %>
+
+<body>
+  
+  <main class="container text-center justify-content-center">
+    <%- include('_usuario') %> 
+
+    <%- include("_nav") %>
+
+    <h1> Productos </h1>
+    <form>
+      <button onclick="addMocks()">Añadir 25 mocks (productos)</button>
+  
+      <button onclick="deleteAllProductos()" >Borrar todos</button>
+    </form>
+
+    <% if (listExists) { %> 
+    <div class="table-responsive px-4">
+      <table class="table table-dark">
+        <tr style="color: yellow;"> <th>Title</th> <th>Price</th> <th>Thumbnail</th> <th>X</th></tr>
+        <% for (let i = 0; i < productos.length; i++) { %>
+        <tr>
+          <td><%=productos[i].titulo%></td>
+          <td><%=productos[i].precio%></td>
+          <td><%=productos[i].thumbnail%></td>
+          <td><button onclick="return addProductoACarrito()"> Añadir al Carrito </button></td>
+        </tr>
+        <%};%>
+      </table>
+    </div>
+    <% } else { %> 
+      <p>No se encontraron productos </p>
+    <% } %> 
+
+
+  </main>
+
+  <%- include('_foot') %> 
