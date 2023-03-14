@@ -1,6 +1,9 @@
 import * as Logger from "./Logger.js"
 import * as db from "./DBs.js"
 import * as Faker from "./Faker.js"
+import * as Mailer from "./Nodemailer.js"
+import mailerEmail from "./config/nodemailerEmail.js"
+import TwilioWpp from "./TwilioWpp.js"
 
 // /signin
 
@@ -44,58 +47,154 @@ function getLogout(req, res) {
 // "/""
 
 function getIndex(req, res) {
-
   res.render("index", {user: req.user})
 }
 
 // /productos
 
 async function getProductos(req, res) {
-  const productos = await db.Products.getAll()
-  Logger.logConsola.info("falta catch de promesa getProductos")
-  
-  let listExists = false
-  if (productos.length > 0) {
+  try {
+    const tagsFiltrables = Faker.tagsFiltrables.join(" - ")
+    const {filtros} = req.params
+    let listExists = false
+    let productos = await db.Products.getAll()
+    
+    if(productos.length <= 0){
+      return res.render("productos", {user: req.user, listExists})
+    }
+
     listExists = true
+
+    if(filtros) {
+      const tags = filtros.split("-")
+      productos = await db.Products.getByTags(tags)
+    }
+    
+    res.render("productos", {user: req.user, tagsFiltrables, productos: productos, listExists})
+  } catch (error) {
+    Logger.logError.error(error)
   }
-  res.render("productos", {user: req.user, productos: productos, listExists})
 }
 
 async function postProductos(req, res) {
-  const {cant} = req.query
+  try {
+    const {cant} = req.query
 
-  if(cant <= 0){
+    if(cant <= 0){
+      return res.redirect("/productos")
+    }
+    if(!cant){
+      const prodMocks = Faker.getProdMocks()
+    } else {
+      const prodMocks = Faker.getProdMocks(cant)
+    }
+      
+    await db.Products.saveMany(prodMocks)
+
     return res.redirect("/productos")
+  } catch (error) {
+    Logger.logError.error(error)
   }
-  if(!cant){
-    const prodMocks = Faker.getProdMocks()
-  } else {
-    const prodMocks = Faker.getProdMocks(cant)
-  }
-    
-  await db.Products.saveMany(prodMocks)
-
-  return res.redirect("/productos")
+  
 }
 
 // /carrito
 
+
 async function getCarrito(req, res) {
-  let carritoExists = false
-  let carrito = {}
-  let carritoId = await db.Carros.getCarritoIdByDueño(req.user.email)
+  try {
+    
+    const dueñoId = req.user.email
+    const {user} = req
+    let carritoExists = false
 
-  if(carritoId.length > 0){
+    let carritoId = await db.Carros.getCarritoIdByDueño(dueñoId)
+    if(!carritoId){  
+      return res.render("carrito", {user: user, carritoExists})
+    } 
+
     carritoExists = true
-    carrito = await db.Carros.getById(carritoId)
-  } else {
-    carritoId = undefined
+
+    const carrito = await db.Carros.getById(carritoId)
+    const productosId = carrito.productos
+
+    // esto debería ser una función en un controlador
+
+    const miCarrito = []
+
+    for (let i = 0; i < productosId.length; i++) {
+      miCarrito.push(await db.Products.getById(productosId[i]))
+    }
+
+    res.render("carrito", {user: user, carritoId, miCarrito, productosId, carritoExists})
+
+  } catch (error) {
+    Logger.logError.error(error)
   }
-
-
-  res.render("carrito", {user: req.user, carritoExists, carrito, carritoId})
 }
 
+async function getAddCarritoProd(req, res) {
+  try {
+    const {referer} = req.headers
+    const {email, prodId} = req.params
+
+    let carritoId = await db.Carros.getCarritoIdByDueño(email)
+    if(!carritoId){
+      carritoId = await db.Carros.crearCarrito(email)
+    }
+
+    await db.Carros.añadirProducto(carritoId, prodId)
+
+    return res.redirect(referer)
+  } catch (error) {
+    Logger.logError.error(error)
+  }
+}
+
+async function getDeleteCarritoProd(req, res) {
+  try {
+    const {referer} = req.headers
+    const {email, prodId} = req.params
+
+    let carritoId = await db.Carros.getCarritoIdByDueño(email)
+
+    await db.Carros.eliminarProducto(carritoId, prodId)
+
+    return res.redirect(referer)
+  } catch (error) {
+    Logger.logError.error(error)
+  }
+}
+
+async function getPedidoCarrito(req, res){
+  try {
+    const {referer} = req.headers
+    const {email, productosId} = req.params
+    const productos = productosId.split(",")
+    const user = await db.Users.getByEmail(email)
+    // enviar email al admin pedido de compra
+/*     Logger.logConsola.info("\n Comprador user: " + user + "\n Carrito: " + productos) */
+    
+    const mailOptions = {
+      from : "Coderhouse EcommerceApp",
+      to : mailerEmail,
+      subject: `Nuevo pedido de compra de ${user.nombre}, correo : ${user.email}`,
+      html: `${productos}
+      `,  
+    }
+    Mailer.ecommerceGmail.sendMail(mailOptions)
+
+    // enviar wpp al admin pedido de compra
+
+    Logger.logConsola.info("Administrador: " + `Nuevo pedido de compra de ${user.nombre} ${user.apellido}, correo : ${user.email}`)
+    
+    // enviar wpp al usuario pedido de compra
+    Logger.logConsola.info("Comprador: " + "Su pedido de compra ha sido recibido y esta en proceso. Le agradecemos por su confianza y paciencia")
+    return res.redirect(referer)
+  } catch (error) {
+    Logger.logError.error(error)
+  }
+}
 // /perfil
 
 function getPerfil(req, res) {
@@ -128,9 +227,12 @@ export {
   getIndex,
   getProductos,
   postProductos,
+  getAddCarritoProd,
+  getDeleteCarritoProd,
+  getPedidoCarrito,
   getCarrito,
   getPerfil,
   postAvatarChange,
   
-  
+
 }

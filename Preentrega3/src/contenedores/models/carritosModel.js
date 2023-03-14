@@ -4,6 +4,7 @@ const carritosColl = 'carritos'
 
 const Schema = new mongoose.Schema({
   productos: {type: Array},
+  dueño: {type: String},
   timestamp: {type: Date, default: Date.now}
 })
 

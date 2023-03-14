@@ -5,10 +5,9 @@ import {Server as IOServer} from "socket.io"
 import MongoStore from "connect-mongo"
 import passport from "passport"
 import session from "express-session"
-import dotenv from "dotenv"
-import {normalize} from "normalizr"
 import compression from "compression"
-import {MONGO_OPTIONS} from "./config/Options.js"
+import {MONGO_OPTIONS} from "./src/config/mongoOptions.js"
+import {MONGO_URL} from "./src/config/mongoUrl.js"
 import { DOT_ENV } from "./src/Dot_Env_Input.js"
 import * as Faker from "./src/Faker.js"
 import * as Logger from "./src/Logger.js"
@@ -36,8 +35,6 @@ if (DOT_ENV.MODE === 'CLUSTER' && cluster.isPrimary){
     cluster.fork()
   })
 } else {
-
-  dotenv.config({path:"E:/CODER-HOUSE/Cursos/Programacion-Backend/EntregaDesafios/Entregas/Preentrega3/config/.env"})
   
   const PUERTO = process.env.PORT || DOT_ENV.PORT
 
@@ -53,7 +50,7 @@ if (DOT_ENV.MODE === 'CLUSTER' && cluster.isPrimary){
   app.use(compression())
   app.use(session({
     store: MongoStore.create({
-      mongoUrl: process.env.MONGO_URL,
+      mongoUrl: MONGO_URL,
       mongoOptions: MONGO_OPTIONS
     }),
     secret: "sSsecreto",
@@ -75,8 +72,8 @@ if (DOT_ENV.MODE === 'CLUSTER' && cluster.isPrimary){
   passport.serializeUser( Passport.Serializar )
   passport.deserializeUser( Passport.Deserializar )
   
-    // App Requests
-  // login
+    // App Requests // Router
+  // login  
   app.get("/login", Routes.getLogin)
   app.post("/login", passport.authenticate("login", {failureRedirect: "/failLogin", successRedirect: "/" }))
   app.get("/failLogin", Routes.getFailLogin)
@@ -92,17 +89,21 @@ if (DOT_ENV.MODE === 'CLUSTER' && cluster.isPrimary){
   // "/"
   app.get("/", checkAuthentication, Routes.getIndex)
   // productos
-  app.get("/productos", checkAuthentication, Routes.getProductos)
+  app.get("/productos/:filtros?", checkAuthentication, Routes.getProductos)
   app.post("/productos", Routes.postProductos, Routes.postProductos)
   // carrito
   app.get("/carrito", checkAuthentication, Routes.getCarrito)
+  app.get("/addCarritoProd/:email/:prodId", checkAuthentication, Routes.getAddCarritoProd)
+  app.get("/deleteCarritoProd/:email/:prodId", checkAuthentication, Routes.getDeleteCarritoProd)
   // perfil
   app.get("/perfil", checkAuthentication, Routes.getPerfil)
   // avatarChange
   app.post("/avatarChange", checkAuthentication, Multer.upload.single("newAvatar"), Routes.FileCheck, Routes.postAvatarChange)
+  // pedidoCarrito
+  app.get("/pedidoCarrito/:email/:productosId", checkAuthentication, Routes.getPedidoCarrito)
   // Server ON
   httpServer.listen(PUERTO, () => {
-    Logger.logConsola.info(`Server iniciado desde el puerto ${PUERTO}`)
+    Logger.logConsola.info(`Server iniciado desde el puerto ${PUERTO} en modo ${DOT_ENV.MODE}`)
   })
 
   // Websocket io
@@ -112,32 +113,14 @@ if (DOT_ENV.MODE === 'CLUSTER' && cluster.isPrimary){
     
     socket.on("addMocks", async (data) => {
       const prodMocks = Faker.getProdMocks()
-    console.log(prodMocks);
       
-      Logger.logConsola.info("llegó io.on addmocks")
       await db.Products.saveMany(prodMocks)
     })
     
     socket.on("deleteAllProductos", async (data) => {
-      Logger.logConsola.info("llegó io.on deleteAllProductos")
       await db.Products.deleteAll()
     })
 
-    socket.on("addProductoACarrito", async (data) => {
-      
-      let carritoId = await db.Carros.getCarritoIdByDueño(data.email)
-
-      if(carritoId.length <= 0){
-        carritoId = await db.Carros.crearCarrito(data.email)
-      }
-      
-      await db.Carros.añadirProductoById(carritoId, data.productoId)
-      .catch( error => {
-        Logger.logError.error(error)
-      }
-
-      )
-    })
   })
 
   function checkAuthentication(req,res,next){

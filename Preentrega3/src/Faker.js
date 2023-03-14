@@ -1,7 +1,6 @@
 import {faker} from "@faker-js/faker"
 
-
-const tagsFiltrables = ["Deporte","Cocina","Ambiente","Educación","Formal","Casual","Barato"]
+const tagsFiltrables = ["deporte","cocina","ambiente","educación","formal","casual","barato"]
 
 function getRandomDeArray(array){
   const indice = Math.floor(Math.random() * array.length)

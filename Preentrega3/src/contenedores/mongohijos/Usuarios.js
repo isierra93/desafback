@@ -1,6 +1,8 @@
 import MongoContainer from "../MongoContainer.js"
 import * as model from "../models/usuariosModel.js"
-import * as logger from "../../Logger.js"
+import * as Logger from "../../Logger.js"
+import * as Mailer from "../../Nodemailer.js"
+import mailerEmail from "../../config/nodemailerEmail.js"
 
 export default class Usuarios extends MongoContainer{
   constructor(){
@@ -16,8 +18,8 @@ export default class Usuarios extends MongoContainer{
       await this.disconnect()
 
       return res
-    } catch (err) {
-      logger.logError.error(err)
+    } catch (error) {
+      Logger.logError.error(error)
     }
   }
 
@@ -25,13 +27,13 @@ export default class Usuarios extends MongoContainer{
     try {
       await this.connect()
 
-      let res = await model.usuarios.find({_id:id},{__v:0})
+      let res = await model.usuarios.find({_id:id},{ __v:0})
 
       await this.disconnect()
 
       return res
     } catch (error) {
-      logger.logError.error(err)
+      Logger.logError.error(error)
     }
   }
 
@@ -43,53 +45,77 @@ export default class Usuarios extends MongoContainer{
 
       await this.disconnect()
       return res
-    } catch (err) {
-      logger.logError.error(err)
+    } catch (error) {
+      Logger.logError.error(error)
     }
   }
 
   //POST
-  async save(obj){
+  async save(user){
     try {
       await this.connect()
 
-      const nuevo = await model.usuarios.create(obj)
-      
+      const nuevoUser = await model.usuarios.create(user)
+
+      // enviar mail al admin registro nuevo
+      const mailOptions = {
+        from : "Coderhouse EcommerceApp",
+        to : mailerEmail,
+        subject: "Nuevo registro",
+        html: `${nuevoUser}`,  
+      }
+      Mailer.ecommerceGmail.sendMail(mailOptions)
+
       await this.disconnect()
 
-      return nuevo
+      return nuevoUser
     } catch (error) {
-      logger.logError.error(error)
+      Logger.logError.error(error)
     }
   }
 
   //PUT
-  async put(id, obj){
+  async put(userId, user){
     try {
       await this.connect()
 
-      let res = await model.usuarios.updateOne({_id: id}, obj)
+      let res = await model.usuarios.updateOne({_id: userId}, user)
 
       await this.disconnect()
 
       return res
     } catch (error) {
-      logger.logError.error(err)
+      Logger.logError.error(error)
     }
   }
 
   //DELETE
-  async deleteById(id){
+  async deleteById(userId){
     try {
       await this.connect()
 
-      let res = await model.usuarios.deleteOne({_id: id})
+      let res = await model.usuarios.deleteOne({_id: userId})
 
       await this.disconnect()
 
       return res
     } catch (error) {
-      logger.logError.error(err)
+      Logger.logError.error(error)
+    }
+  }
+
+  async deleteAll(){
+    try {
+      await this.connect()
+
+      let res = await model.usuarios.deleteMany()
+
+      await this.disconnect()
+
+      return res
+    } catch (error) {
+      Logger.logError.error(error)
     }
   }
 }
+

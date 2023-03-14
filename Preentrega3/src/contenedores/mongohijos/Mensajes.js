@@ -1,6 +1,6 @@
 import MongoContainer from "../MongoContainer.js"
 import * as model from "../models/mensajesModel.js"
-import * as logger from "../../Logger.js"
+import * as Logger from "../../Logger.js"
 
 export default class Mensajes extends MongoContainer{
   constructor(){
@@ -17,7 +17,7 @@ export default class Mensajes extends MongoContainer{
 
       return res
     } catch (error) {
-      console.log(error)
+      Logger.logError.error(error)
     }
   }
 
@@ -29,8 +29,8 @@ export default class Mensajes extends MongoContainer{
       await this.disconnect()
 
       return res
-    } catch (err) {
-      logger.logError.error(err)
+    } catch (error) {
+      Logger.logError.error(error)
     }
   }
 
@@ -45,7 +45,7 @@ export default class Mensajes extends MongoContainer{
 
       return nuevo
     } catch (error) {
-      logger.logError.error(err)
+      Logger.logError.error(error)
     }
   }
 
@@ -59,8 +59,8 @@ export default class Mensajes extends MongoContainer{
       await this.disconnect()
 
       return res
-    } catch (err) {
-      logger.logError.error(err)
+    } catch (error) {
+      Logger.logError.error(error)
     }
   }
 
@@ -74,8 +74,8 @@ export default class Mensajes extends MongoContainer{
       await this.disconnect()
 
       return res
-    } catch (err) {
-      logger.logError.error(err)
+    } catch (error) {
+      Logger.logError.error(error)
     }
   }
 }
