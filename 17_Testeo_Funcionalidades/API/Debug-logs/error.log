@@ -1,0 +1,136 @@
+
+[2023-03-23T17:52:20.526] [ERROR] error - Error: mensajes validation failed: autor.email: Path `email` is required.
+    at ValidationError.inspect (E:\CODER-HOUSE\Cursos\Programacion-Backend\EntregaDesafios\Desafios\16\node_modules\mongoose\lib\error\validation.js:50:26)
+    at formatValue (node:internal/util/inspect:806:19)
+    at inspect (node:internal/util/inspect:365:10)
+    at formatWithOptionsInternal (node:internal/util/inspect:2292:40)
+    at Object.format (node:internal/util/inspect:2149:10)
+    at basicLayout (E:\CODER-HOUSE\Cursos\Programacion-Backend\EntregaDesafios\Desafios\16\node_modules\log4js\lib\layouts.js:65:52)
+    at app (E:\CODER-HOUSE\Cursos\Programacion-Backend\EntregaDesafios\Desafios\16\node_modules\log4js\lib\appenders\file.js:98:23)
+    at E:\CODER-HOUSE\Cursos\Programacion-Backend\EntregaDesafios\Desafios\16\node_modules\log4js\lib\log4js.js:43:5
+    at Array.forEach (<anonymous>)
+    at sendLogEventToAppender (E:\CODER-HOUSE\Cursos\Programacion-Backend\EntregaDesafios\Desafios\16\node_modules\log4js\lib\log4js.js:42:21) {
+  errors: {
+    'autor.email': ValidatorError: Path `email` is required.
+        at validate (E:\CODER-HOUSE\Cursos\Programacion-Backend\EntregaDesafios\Desafios\16\node_modules\mongoose\lib\schematype.js:1346:13)
+        at SchemaString.SchemaType.doValidate (E:\CODER-HOUSE\Cursos\Programacion-Backend\EntregaDesafios\Desafios\16\node_modules\mongoose\lib\schematype.js:1330:7)
+        at E:\CODER-HOUSE\Cursos\Programacion-Backend\EntregaDesafios\Desafios\16\node_modules\mongoose\lib\document.js:2912:18
+        at processTicksAndRejections (node:internal/process/task_queues:78:11) {
+      properties: [Object],
+      kind: 'required',
+      path: 'email',
+      value: undefined,
+      reason: undefined,
+      [Symbol(mongoose:validatorError)]: true
+    }
+  },
+  _message: 'mensajes validation failed'
+}
+[2023-03-23T17:53:28.037] [ERROR] error - Error: mensajes validation failed: autor.email: Path `email` is required.
+    at ValidationError.inspect (E:\CODER-HOUSE\Cursos\Programacion-Backend\EntregaDesafios\Desafios\16\node_modules\mongoose\lib\error\validation.js:50:26)
+    at formatValue (node:internal/util/inspect:806:19)
+    at inspect (node:internal/util/inspect:365:10)
+    at formatWithOptionsInternal (node:internal/util/inspect:2292:40)
+    at Object.format (node:internal/util/inspect:2149:10)
+    at basicLayout (E:\CODER-HOUSE\Cursos\Programacion-Backend\EntregaDesafios\Desafios\16\node_modules\log4js\lib\layouts.js:65:52)
+    at app (E:\CODER-HOUSE\Cursos\Programacion-Backend\EntregaDesafios\Desafios\16\node_modules\log4js\lib\appenders\file.js:98:23)
+    at E:\CODER-HOUSE\Cursos\Programacion-Backend\EntregaDesafios\Desafios\16\node_modules\log4js\lib\log4js.js:43:5
+    at Array.forEach (<anonymous>)
+    at sendLogEventToAppender (E:\CODER-HOUSE\Cursos\Programacion-Backend\EntregaDesafios\Desafios\16\node_modules\log4js\lib\log4js.js:42:21) {
+  errors: {
+    'autor.email': ValidatorError: Path `email` is required.
+        at validate (E:\CODER-HOUSE\Cursos\Programacion-Backend\EntregaDesafios\Desafios\16\node_modules\mongoose\lib\schematype.js:1346:13)
+        at SchemaString.SchemaType.doValidate (E:\CODER-HOUSE\Cursos\Programacion-Backend\EntregaDesafios\Desafios\16\node_modules\mongoose\lib\schematype.js:1330:7)
+        at E:\CODER-HOUSE\Cursos\Programacion-Backend\EntregaDesafios\Desafios\16\node_modules\mongoose\lib\document.js:2912:18
+        at processTicksAndRejections (node:internal/process/task_queues:78:11) {
+      properties: [Object],
+      kind: 'required',
+      path: 'email',
+      value: undefined,
+      reason: undefined,
+      [Symbol(mongoose:validatorError)]: true
+    }
+  },
+  _message: 'mensajes validation failed'
+}
+[2023-03-23T17:54:52.697] [ERROR] error - Error: mensajes validation failed: autor.email: Path `email` is required.
+    at ValidationError.inspect (E:\CODER-HOUSE\Cursos\Programacion-Backend\EntregaDesafios\Desafios\16\node_modules\mongoose\lib\error\validation.js:50:26)
+    at formatValue (node:internal/util/inspect:806:19)
+    at inspect (node:internal/util/inspect:365:10)
+    at formatWithOptionsInternal (node:internal/util/inspect:2292:40)
+    at Object.format (node:internal/util/inspect:2149:10)
+    at basicLayout (E:\CODER-HOUSE\Cursos\Programacion-Backend\EntregaDesafios\Desafios\16\node_modules\log4js\lib\layouts.js:65:52)
+    at app (E:\CODER-HOUSE\Cursos\Programacion-Backend\EntregaDesafios\Desafios\16\node_modules\log4js\lib\appenders\file.js:98:23)
+    at E:\CODER-HOUSE\Cursos\Programacion-Backend\EntregaDesafios\Desafios\16\node_modules\log4js\lib\log4js.js:43:5
+    at Array.forEach (<anonymous>)
+    at sendLogEventToAppender (E:\CODER-HOUSE\Cursos\Programacion-Backend\EntregaDesafios\Desafios\16\node_modules\log4js\lib\log4js.js:42:21) {
+  errors: {
+    'autor.email': ValidatorError: Path `email` is required.
+        at validate (E:\CODER-HOUSE\Cursos\Programacion-Backend\EntregaDesafios\Desafios\16\node_modules\mongoose\lib\schematype.js:1346:13)
+        at SchemaString.SchemaType.doValidate (E:\CODER-HOUSE\Cursos\Programacion-Backend\EntregaDesafios\Desafios\16\node_modules\mongoose\lib\schematype.js:1330:7)
+        at E:\CODER-HOUSE\Cursos\Programacion-Backend\EntregaDesafios\Desafios\16\node_modules\mongoose\lib\document.js:2912:18
+        at processTicksAndRejections (node:internal/process/task_queues:78:11) {
+      properties: [Object],
+      kind: 'required',
+      path: 'email',
+      value: undefined,
+      reason: undefined,
+      [Symbol(mongoose:validatorError)]: true
+    }
+  },
+  _message: 'mensajes validation failed'
+}
+[2023-03-30T16:58:09.398] [ERROR] error - CastError: Cast to ObjectId failed for value "2" (type string) at path "_id" for model "productos"
+    at model.Query.exec (E:\CODER-HOUSE\Cursos\Programacion-Backend\EntregaDesafios\Desafios\17_Testeo_Funcionalidades\api\node_modules\mongoose\lib\query.js:4927:21)
+    at model.Query.Query.then (E:\CODER-HOUSE\Cursos\Programacion-Backend\EntregaDesafios\Desafios\17_Testeo_Funcionalidades\api\node_modules\mongoose\lib\query.js:5026:15)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5) {
+  messageFormat: undefined,
+  stringValue: '"2"',
+  kind: 'ObjectId',
+  value: '2',
+  path: '_id',
+  reason: BSONTypeError: Argument passed in must be a string of 12 bytes or a string of 24 hex characters or an integer
+      at new BSONTypeError (E:\CODER-HOUSE\Cursos\Programacion-Backend\EntregaDesafios\Desafios\17_Testeo_Funcionalidades\api\node_modules\bson\lib\error.js:41:28)
+      at new ObjectId (E:\CODER-HOUSE\Cursos\Programacion-Backend\EntregaDesafios\Desafios\17_Testeo_Funcionalidades\api\node_modules\bson\lib\objectid.js:67:23)
+      at castObjectId (E:\CODER-HOUSE\Cursos\Programacion-Backend\EntregaDesafios\Desafios\17_Testeo_Funcionalidades\api\node_modules\mongoose\lib\cast\objectid.js:25:12)
+      at ObjectId.cast (E:\CODER-HOUSE\Cursos\Programacion-Backend\EntregaDesafios\Desafios\17_Testeo_Funcionalidades\api\node_modules\mongoose\lib\schema\objectid.js:246:12)
+      at ObjectId.SchemaType.applySetters (E:\CODER-HOUSE\Cursos\Programacion-Backend\EntregaDesafios\Desafios\17_Testeo_Funcionalidades\api\node_modules\mongoose\lib\schematype.js:1201:12)
+      at ObjectId.SchemaType._castForQuery (E:\CODER-HOUSE\Cursos\Programacion-Backend\EntregaDesafios\Desafios\17_Testeo_Funcionalidades\api\node_modules\mongoose\lib\schematype.js:1648:15)
+      at ObjectId.SchemaType.castForQuery (E:\CODER-HOUSE\Cursos\Programacion-Backend\EntregaDesafios\Desafios\17_Testeo_Funcionalidades\api\node_modules\mongoose\lib\schematype.js:1636:15)
+      at ObjectId.SchemaType.castForQueryWrapper (E:\CODER-HOUSE\Cursos\Programacion-Backend\EntregaDesafios\Desafios\17_Testeo_Funcionalidades\api\node_modules\mongoose\lib\schematype.js:1612:20)
+      at cast (E:\CODER-HOUSE\Cursos\Programacion-Backend\EntregaDesafios\Desafios\17_Testeo_Funcionalidades\api\node_modules\mongoose\lib\cast.js:342:32)
+      at model.Query.Query.cast (E:\CODER-HOUSE\Cursos\Programacion-Backend\EntregaDesafios\Desafios\17_Testeo_Funcionalidades\api\node_modules\mongoose\lib\query.js:5357:12),
+  valueType: 'string'
+}
+[2023-03-30T17:37:34.759] [ERROR] error - CastError: Cast to ObjectId failed for value "1" (type string) at path "_id" for model "productos"
+    at model.Query.exec (E:\CODER-HOUSE\Cursos\Programacion-Backend\EntregaDesafios\Desafios\17_Testeo_Funcionalidades\api\node_modules\mongoose\lib\query.js:4927:21)
+    at model.Query.Query.then (E:\CODER-HOUSE\Cursos\Programacion-Backend\EntregaDesafios\Desafios\17_Testeo_Funcionalidades\api\node_modules\mongoose\lib\query.js:5026:15)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5) {
+  messageFormat: undefined,
+  stringValue: '"1"',
+  kind: 'ObjectId',
+  value: '1',
+  path: '_id',
+  reason: BSONTypeError: Argument passed in must be a string of 12 bytes or a string of 24 hex characters or an integer
+      at new BSONTypeError (E:\CODER-HOUSE\Cursos\Programacion-Backend\EntregaDesafios\Desafios\17_Testeo_Funcionalidades\api\node_modules\bson\lib\error.js:41:28)
+      at new ObjectId (E:\CODER-HOUSE\Cursos\Programacion-Backend\EntregaDesafios\Desafios\17_Testeo_Funcionalidades\api\node_modules\bson\lib\objectid.js:67:23)
+      at castObjectId (E:\CODER-HOUSE\Cursos\Programacion-Backend\EntregaDesafios\Desafios\17_Testeo_Funcionalidades\api\node_modules\mongoose\lib\cast\objectid.js:25:12)
+      at ObjectId.cast (E:\CODER-HOUSE\Cursos\Programacion-Backend\EntregaDesafios\Desafios\17_Testeo_Funcionalidades\api\node_modules\mongoose\lib\schema\objectid.js:246:12)
+      at ObjectId.SchemaType.applySetters (E:\CODER-HOUSE\Cursos\Programacion-Backend\EntregaDesafios\Desafios\17_Testeo_Funcionalidades\api\node_modules\mongoose\lib\schematype.js:1201:12)
+      at ObjectId.SchemaType._castForQuery (E:\CODER-HOUSE\Cursos\Programacion-Backend\EntregaDesafios\Desafios\17_Testeo_Funcionalidades\api\node_modules\mongoose\lib\schematype.js:1648:15)
+      at ObjectId.SchemaType.castForQuery (E:\CODER-HOUSE\Cursos\Programacion-Backend\EntregaDesafios\Desafios\17_Testeo_Funcionalidades\api\node_modules\mongoose\lib\schematype.js:1636:15)
+      at ObjectId.SchemaType.castForQueryWrapper (E:\CODER-HOUSE\Cursos\Programacion-Backend\EntregaDesafios\Desafios\17_Testeo_Funcionalidades\api\node_modules\mongoose\lib\schematype.js:1612:20)
+      at cast (E:\CODER-HOUSE\Cursos\Programacion-Backend\EntregaDesafios\Desafios\17_Testeo_Funcionalidades\api\node_modules\mongoose\lib\cast.js:342:32)
+      at model.Query.Query.cast (E:\CODER-HOUSE\Cursos\Programacion-Backend\EntregaDesafios\Desafios\17_Testeo_Funcionalidades\api\node_modules\mongoose\lib\query.js:5357:12),
+  valueType: 'string'
+}
+[2023-04-01T12:03:21.022] [ERROR] error - MongoExpiredSessionError: Cannot use a session that has ended
+    at applySession (E:\CODER-HOUSE\Cursos\Programacion-Backend\EntregaDesafios\Desafios\17_Testeo_Funcionalidades\api\node_modules\mongodb\lib\sessions.js:655:16)
+    at Connection.command (E:\CODER-HOUSE\Cursos\Programacion-Backend\EntregaDesafios\Desafios\17_Testeo_Funcionalidades\api\node_modules\mongodb\lib\cmap\connection.js:294:53)
+    at E:\CODER-HOUSE\Cursos\Programacion-Backend\EntregaDesafios\Desafios\17_Testeo_Funcionalidades\api\node_modules\mongodb\lib\sdam\server.js:208:18
+    at Object.callback (E:\CODER-HOUSE\Cursos\Programacion-Backend\EntregaDesafios\Desafios\17_Testeo_Funcionalidades\api\node_modules\mongodb\lib\cmap\connection_pool.js:327:13)
+    at ConnectionPool.processWaitQueue (E:\CODER-HOUSE\Cursos\Programacion-Backend\EntregaDesafios\Desafios\17_Testeo_Funcionalidades\api\node_modules\mongodb\lib\cmap\connection_pool.js:506:33)
+    at E:\CODER-HOUSE\Cursos\Programacion-Backend\EntregaDesafios\Desafios\17_Testeo_Funcionalidades\api\node_modules\mongodb\lib\cmap\connection_pool.js:207:37
+    at processTicksAndRejections (node:internal/process/task_queues:78:11) {
+  [Symbol(errorLabels)]: Set(0) {}
+}
