@@ -1,0 +1,40 @@
+{
+  "name": "api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@faker-js/faker": "^7.6.0",
+    "bcrypt": "^5.1.0",
+    "connect-mongo": "^4.6.0",
+    "dotenv": "^16.0.3",
+    "ejs": "^3.1.8",
+    "http": "^0.0.1-security",
+    "koa": "^2.14.1",
+    "koa-body": "^6.0.1",
+    "koa-bodyparser": "^4.4.0",
+    "koa-compress": "^5.1.1",
+    "koa-ejs": "^4.3.0",
+    "koa-passport": "^6.0.0",
+    "koa-router": "^12.0.0",
+    "koa-session": "^6.4.0",
+    "koa-static": "^5.0.0",
+    "koa-views": "^8.0.0",
+    "log4js": "^6.7.1",
+    "minimist": "^1.2.7",
+    "mongoose": "^6.9.1",
+    "normalizr": "^3.6.2",
+    "passport": "^0.6.0",
+    "passport-local": "^1.0.0",
+    "socket.io": "^4.6.0",
+    "yargs": "^17.6.2"
+  }
+}

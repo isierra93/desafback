@@ -1,0 +1,22 @@
+<%- include('_head') %> <%- include('_head') %> 
+<body>
+  
+  <main class="container text-center">
+
+    <h1>Productos con Faker</h1>
+    <div class="table-responsive px-4">
+      <table class="table table-dark">
+        <tr style="color: yellow;"> <th>Nombre</th> <th>Precio</th> <th>Thumbnail</th> </tr>
+        <% for (const prod of productos) {%>
+        <tr>
+          <td><%=prod.nombre%></td>
+          <td><%=prod.precio%></td>
+          <td><%=prod.foto%></td>
+        </tr>
+        <%};%>
+      </table>
+    </div>
+      
+    
+  </main>
+  <%- include('_foot') %> 
